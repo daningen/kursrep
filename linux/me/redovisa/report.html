@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="sv">
+<meta charset="utf-8">
+<title>Redovisningar | Kursen linux</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<nav>
+    <a href="me.html">Om mig</a> |
+    <a href="report.html">Redovisning</a>
+</nav>
+
+<article>
+
+<h1>Min Redovisnings-sida</h1>
+
+<h2>Kmom01</h2>
+
+<p> Övningarna gick bra och jag fick igenom dessa när jag körde dbwebb validate. Däremot får jag tre olika fel när jag kör inspect. Ni får gärna tala om för mig vad som är fel</p>
+
+<p>Min utvecklingsmiljö består av en MacBook och editorn Atom. Jag har installerat Debian i en VirtualBox på min Mac. Tills nu har detta fungerat bra även om det tog mycket frustration att få allting korrekt. De problem jag stötte på var dels språksättningen där jag inte kunde få just kombinationen svenska och engelska som installationsspråk. Det andra problemet gällde själva copy/paste biten. Efter ett antal ominstallationer lyckades jag få detta att fungera. Spännande med virtuella servrar, jag stöter på detta dagligen utan att själv direkt arbeta med detta.
+Jag ägnade även en massa tid till att få till min ssh. Frustrerande när det inte fungerar men desto härligare när man lyckas. På vägen lär jag ju mig en hel del.</p>
+
+<p>Jag har viss erfarenhet av olika unix varianter men det var många år sedan jag verkligen var inne och petade. Men jag märker redan nu att jag har lite bra att ha kunskaper. Skönt att kunna trixa lite med vi. Det ska bli kul att praktisera lite. </p>
+
+<h2>Kmom02</h2>
+
+<p>Här skriver du redovisningstext för kursmoment 02.</p>
+
+Hur känns konceptet med Apache name-based Virtual Hosts? Känner du igen det sedan tidigare?
+Nej detta är helt nytt för mig. Jag hade en del problem att få allt att fungera men när det väl gör det verkar det smidigt. Jag behöver dock reflektera över de olika momenten. I samband med installation och konfiguration blev det oklart för mig om jag skull använda NAT eller bridge. Jag hade först NAT och fått detta att fungera, bytte till Bridge och detta fungerade också men när jag sedan bytte tillbaka till NAT (det var så jag tolkade instruktionen) fick jag problem och kunde helt plötsligt inte ssha till servern. Jag började då peta i /etc/hosts utan resultat. Provade en omstart av servern och då fick jag problemet att det inte gick att logga in. Blev promptad på user/password och kom inte ur den loopen. Lyckades få igång servern i recovery-läge och kunde då stöd av andra som haft liknande fel skapa en ny Xauthority fil. Utan riktigt ha koll på detta fick jag efter några lärorika timmar igång servern och efter detta gick allt som på räls. Jag tycker hade gärna sett lite bättre info om nätverksinställningarna. Dock  tror jag inte att det var detta som orsakade min låsning. Funderar nu på om jag ska ta en snapshot på systemet för att ha en punkt att gå tillbaka till om jag får problem igen.
+
+Det blir allt fler kommandon i terminalen, hur känns det med terminalen och dess kommandon?
+Helt ok med alla kommandon, det gäller bara att komma ihåg dem. Jag använder mig en hel del av history där jag grepar ut fragment av kommandona. Detta hjälper mig framåt. Större utmaning är att få till olika specialtecken. Dessa är inte alltid samma som de jag skriver utanför virtualbox. Google hjälper mig dock gång på gång och var egentligen i revovery-läget då jag inte kunde kopiera/klistra in olika kommandon.
+
+Gick det bra med ssh-nycklar och rsync över ssh?
+Trodde att detta skulle gå direkt men fick problem med rsync. Att skapa nycklarna och lägga upp den publika nyckeln i min virtuella server gick först bra men med rsync gick det inte alls. Testade enligt kursens film och sökte länge efter en lösning. Lyckades sedan få ssh att sluta fungera vilket visade sig bero på att jag hade chmodat lite för mycket behörighet på vissa kataloger. Lärorikt ja, men ack så frustrerande. När väl behörighetsstrukturen blev korrekt gick det även bättre med rsync.
+Hur kändes det att jobba med tmux?
+Tmux är ju ett fantastiskt verktyg. Behöver dock bli lite mera fingerfärdig och lära mig alla kortkommandon. Men jag ser helt klart nyttan med att ha ett sådant verktyg och kommer garanterat försöka använda det både under och utanför kursen. Perfekt att skapa olika alias för kommandona.
+
+
+
+<h2>Kmom03</h2>
+
+Är detta din första bekantskap med skriptprogrammering i Bash?
+
+
+Nej, jag har stött på detta tidigare och märkte precis att vi använder en del bash i företagets devops processer. Jag har inte direkt programmerat i detta men det har kanske blivit så att jag kopierat några rader vid något tillfälle.
+
+Vilka möjligheter/utmaningar ser du med denna typen av skriptprogrammering?
+
+Efter att precis har jobbat igenom python-kursen tycker jag att bash känns besvärligt och även om jag inte har skrivit så många rader har jag ändå fått lägga ner en hel del tid till felsökning. Bash utvärderar det som skrivs på ett för mig nytt sätt och jag gissar att om jag blir sams med det kan jag även uppskatta det jag stör mig på just nu. Ställde frågan till en erfaren kollega som har använt all sorts script-programmering, typ bourneshell ksh, perl osv och det enda han inte gillade var just python. Jag tror att det hade att göra med möjlighet till tabbning som kan ställa till det beroende på vilken editor man använder. Jag ser många användingsområden runt automatisering för att kopiera, flytta filer/filsystem etc. Det är nog nyttigt att hjälpligt kunna tyda bash då det verkar förekomma lite överallt.
+
+
+Var det något som var extra svårt eller utmanande i uppgifterna?
+
+Just felsökningen var problematisk då den svalde det jag skrev utan att ge mig det svar jag ville ha. Annars tycker jag att uppgifterna var på en lagom nivå med bra övningar där man fick söka i loggen. Detta är förstås ett perfekt område för olika typer av scriptprogrammering.
+
+Tittade du på videoserien? Vad tyckte du om den?
+
+Ja, jag tittade på delar av den samt på annat material som jag kunde komma över på nätet. Dessa är på en bra nivå.
+
+
+
+<h2>Kmom04</h2>
+
+<p>Här skriver du redovisningstext för kursmoment 04.</p>
+
+<h2>Kmom05</h2>
+
+<p>Här skriver du redovisningstext för kursmoment 05.</p>
+
+</article>
+
+</html>

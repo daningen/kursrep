@@ -1,0 +1,101 @@
+# --------------------------------------------------------------------------
+#
+# Init
+#
+dbwebb init-me
+
+
+
+# --------------------------------------------------------------------------
+#
+# Kmom01
+#
+
+#
+# install
+# https://dbwebb.se/uppgift/installera-debian-som-server
+#
+touch me/kmom01/install/log.txt
+touch me/kmom01/install/ssh.png
+
+#
+# redovisa
+# https://dbwebb.se/uppgift/skapa-en-me-sida-till-linux-kursen
+#
+cp -i example/me/* me/redovisa/
+dbwebb validate redovisa
+
+
+
+# --------------------------------------------------------------------------
+#
+# Kmom02
+#
+
+# bash1
+cd me/kmom02 && dbwebb recreate bash1
+cd me/kmom02/bash1 && ./answer.bash; [[ $? = 42 ]]
+dbwebb validate bash1
+
+#
+# vhost
+# https://dbwebb.se/uppgift/installera-debian-som-server
+#
+touch me/kmom02/vhost/log.txt
+touch me/kmom02/vhost/me.linux.se.conf
+touch me/kmom02/vhost/dump.png
+
+
+
+# --------------------------------------------------------------------------
+#
+# Kmom03
+#
+
+# bash2
+cd me/kmom03 && dbwebb recreate bash2
+cd me/kmom03/bash2 && ./answer.bash; [[ $? = 42 ]]
+dbwebb validate bash2
+
+
+
+# --------------------------------------------------------------------------
+#
+# Kmom04
+#
+
+# node1
+cd me/kmom04 && dbwebb recreate node1
+node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
+dbwebb validate node1
+
+
+
+# --------------------------------------------------------------------------
+#
+# Kmom05
+#
+
+# node2
+cd me/kmom05 && dbwebb recreate node2
+node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
+dbwebb validate node2
+
+
+
+# --------------------------------------------------------------------------
+#
+# Kmom06
+#
+
+# node3
+cd me/kmom06 && dbwebb recreate node3
+node_modules/.bin/babel-node me/kmom04/node1/answer.js; [[ $? = 42 ]]
+dbwebb validate node3
+
+
+
+# --------------------------------------------------------------------------
+#
+# Kmom10
+#

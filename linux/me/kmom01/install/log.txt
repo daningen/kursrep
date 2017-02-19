@@ -1,0 +1,56 @@
+ls -l /etc/host
+dan@debian:~$ cat /etc/hosts
+127.0.0.1	localhost
+127.0.1.1	debian.mydomain.se	debian
+
+ssh dan@localhost -p 2222
+
+sudo /sbin/ifconfig  (fick köra detta för att få ut ip)
+dan@debian:~$ sudo /sbin/ifconfig
+eth0      Link encap:Ethernet  HWaddr 08:00:27:ac:c5:f3  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+
+dan@debian:~$ uname -a
+Linux debian 3.16.0-4-amd64 #1 SMP Debian 3.16.39-1 (2016-12-30) x86_64 GNU/Linux
+
+
+
+**********************************
+
+
+
+ctrl shift v - klistra in
+installerat debian på virtualbox
+https://dbwebb.se/kunskap/installera-debian-pa-virtualbox
+mydomain.se
+dan/daningen
+$ - detta får jag fram med alt 4 (obs alt på höger sida om musen)
+
+startx
+
+ny installation 21/1
+su
+apt-get install sudo
+echo "mos ALL=NOPASSWD: ALL" > /etc/sudoers.d/mos
+
+sudo bash
+apt-get install openssh-server
+ inloggning mot server daer16/5ENu_rm8
+ssh daer16@ssh.student.bth  (fungerar)
+
+lägg in detta i network i virtualbox (Klicka på knappen “Port Forwarding”.)
+Namn	Host Port	Guest Port
+http		8080		80
+ssh		2222		22
+
+General, gå till Advanced i virtualbox
+Bidirectional
+Installera guestAdditions
+sudo apt-get install linux-headers-$(uname -r)
+$ sudo apt-get install make gcc
+$ sudo apt-get install dkms
+
+Montera CD:n via menyvalet "Devices/Insert Guest Additions CD Image...". (funkar ej)
+Could not mount the media/drive '/Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso' (VERR_PDM_MEDIA_LOCKED)
+
+

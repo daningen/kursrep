@@ -1,0 +1,26 @@
+ody {
+    background-color: #fff;
+    color: #333;
+    font-family: Verdana,sans-serif;
+    font-size: 12px;
+    margin: 50px;
+    width: 600px;
+}
+article {
+    border-color: #ccc
+    ;
+    border-radius: 5px;
+    border-style: double;
+    border-width: 4px;
+    padding: 25px;
+}
+h1 {
+    margin-top: 0;
+}
+img {
+    float: left;
+    margin-right: 25px;
+}
+code {
+    color: green;
+}

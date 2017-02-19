@@ -1,0 +1,320 @@
+log
+20170205
+problem med att ssha till debian. En av mina kataloger hade för mycket behörighet så jag fick ändra enl:
+för /home/dan
+There it is. Group has write access to ~rudra:
+$ls -alF .ssh/ total 12K
+drwx------.  2 rudra rudra 4.0K Oct 12 14:16 ./
+drwxrwxr-x. 36 rudra rudra 4.0K Oct 12 14:30 ../
+-rw-------.  1 rudra rudra  394 Oct 10 12:01 authorized_keys
+
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub dan@linux.dbwebb.se -p 2222
+
+rsync -av  /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02
+
+synka filer från min lokala till debian - funkar!!!
+rsync -avr /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/ -e 'ssh -p 2222' dan@me.linux.se:/home/dan/testdir/
+
+kopiera 
+
+/etc/apache2/sites-available/me.linux.se.conf 
+till
+/Users/danerlandsson/dbwebb-kurser/linux/me/kmom02
+ok med copy paste
+
+Öppna en terminal, använd lynx för att öppna din nyligen skapade webbplats. Skriv kommandot du använder i loggen.
+Ta en skärmdump på terminalen som visar när du använder lynx för att komma åt webbplatsen. Spara den som dump.png. Spara bilden i formatet PNG och använd små bokstäver i filnamnet.
+
+lynx
+sudo ls /var/log/apache2
+lynx http://linux.dbwebb.se  - denna funkar
+
+sudo vi /etc/hosts (på debian)
+lynx http://me.linux.se   - denna funkar från debian
+
+skapa fil dump.png
+
+flytta filerna till min virtuell host
+mv redovisa/ vhosts/me.linux.se/htdocs/
+
+
+
+
+Krav 2
+Använd rsync över ssh för att kopiera din me-sida från me/redovisa och lägg den i den virtuella hostens webroot. Skriv kommandot för rsync i din loggfil.
+ 
+
+rsync -avr /Users/danerlandsson/dbwebb-kurser/linux/me/redovisa/ -e 'ssh -p 2222' dan@me.linux.se:/home/dan/redovisa/   ok
+
+20170131
+cd /etc/apache2/sites-available
+cp linux.dbwebb.se.conf me.linux.se.conf
+sudo vi me.linux.se.conf
+sudo a2ensite me.linux.se
+sudo service apache2 reload
+
+mkdir $HOME/vhosts/me.linux.se
+mkdir $HOME/vhosts/me.linux.se/htdocs
+samma kommandon som när jag satte upp exemplet
+http://me.linux.se:8080/
+ok
+rsync
+rsync -av -e ”ssh -p 2222” dan@me.linux.se ”/etc/apache2/sites-available/me.linux.se.conf /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/vhost”
+
+
+rsync example for backing up / copying from remote server to local Mac computer:
+rsync -arv user01@server01.comentum.com:/home/user01/ /Users/bob/user01backup/
+(/Users/bob/user01backup/ is a local Mac folder path)
+
+rsync -av -e ”ssh -p 2222” vhost / dan@me.linux.se:vhost/
+
+rsync -av -e vhost / dan@me.linux.se:vhost/
+
+test
+ssh -p 2222 dan@me.linux.se ls /etc/apache2/sites-available/   ok, funkar
+
+rsync -arv  dan@me.linux.se:/etc/apache2/sites-available/me.linux.se.conf /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02
+rsync -av -e ”ssh -p 2222” dan@me.linux.se:/etc/apache2/sites-available/me.linux.se.conf /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/
+
+/Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/
+
+rsync -av -e ”ssh -p 2222” dan@me.linux.se: /home/dan
+
+￼
+
+rsync -avh /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/hejsan dan@me.linux.se:/home/dan
+
+￼
+
+rsync -azh /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/hejsan -e ’ssh -p 2222’ dan@me.linux.se:/home/dan/x/
+
+rsync -azh /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/ -e ’ssh -p 2222’ dan@me.linux.se:/home/dan
+
+ 
+
+rsync -av -e 'ssh - p 2222' testdir dan@me.linux.se testdir
+	dan@me.linux.se/dan@me.linux.se/testdir/dan@me.linux.se/dan@me.linux.se/
+	dan@me.linux.se/dan@me.linux.se/testdir/dan@me.linux.se/dan@me.linux.se/hejsan2
+	dan@me.linux.se/testdir/dan@me.linux.se/testdir/
+	dan@me.linux.se/testdir/dan@me.linux.se/testdir/hejsan2
+	dan@me.linux.se/testdir/dan@me.linux.se/testdir/dan@me.linux.se/
+	dan@me.linux.se/testdir/dan@me.linux.se/testdir/dan@me.linux.se/hejsan2
+	dan@me.linux.se/testdir/dan@me.linux.se/testdir/dan@me.linux.se/dan@me.linux.se/
+	dan@me.linux.se/testdir/dan@me.linux.se/testdir/dan@me.linux.se/dan@me.linux.se/hejsan2
+testdir/
+testdir/hejsan2
+testdir/dan@me.linux.se/
+testdir/dan@me.linux.se/hejsan2
+testdir/dan@me.linux.se/dan@me.linux.se/
+testdir/dan@me.linux.se/dan@me.linux.se/hejsan2
+testdir/dan@me.linux.se/testdir/
+testdir/dan@me.linux.se/testdir/hejsan2
+testdir/dan@me.linux.se/testdir/dan@me.linux.se/
+testdir/dan@me.linux.se/testdir/dan@me.linux.se/hejsan2
+testdir/dan@me.linux.se/testdir/dan@me.linux.se/dan@me.linux.se/
+testdir/dan@me.linux.se/testdir/dan@me.linux.se/dan@me.linux.se/hejsan2
+
+
+
+rsync -azh 'ssh -p 2222’ dan@me.linux.se:/home/dan/testdir -e testdir/
+rsync -avh /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/ dan@me.linux.se:/home/dan/testdir
+
+rsync -avh /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/ dan@me.linux.se:/home/dan -p 2222
+rsync -avh dan@me.linux.se:/home/dan -p2222 /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/ 
+rsync -azh 'ssh -p 2222’ dan@me.linux.se:/home/dan  /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/ 
+
+rsync "ssh -p 2222" dan@me.linux.se:/home/dan /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/
+rsync -azh ”ssh -p 2222”  dan@me.linux.se:/home/dan /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/
+
+rsync -avh /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/gurkan.txt -e 'ssh -p 2222’ dan@me.linux.se:/home/dan/testdir
+ok fast åt fel håll
+
+rsync -avh /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/gurkan.txt -e 'ssh -p 2222’ dan@me.linux.se:/home/dan/testdir
+
+rsync -av /Users/danerlandsson/dbwebb-kurser/linux/me/kmom02/testdir/gurkan.txt /home/dan/testdir ssh -p 2222’ dan@me.linux.se
+
+rsync -t testdir/gurkan* "ssh -p 2222" dan@me.linux.se:/home/dan
+
+
+20170130
+dbwebb inspect kmom02
+-------------------------------------------------------------
+-- vhost
+-- https://dbwebb.se/uppgift/skapa-en-webbplats-pa-en-apache-virtual-host
+-------------------------------------------------------------
+View content of directory:
+/home/saxon/students/20162/daer16/dbwebb-kurser/linux/me/kmom02/vhost
+
+0 directories, 0 files
+
+Open files in an editor:
+ "/home/saxon/students/20162/daer16/dbwebb-kurser/linux/me/kmom02/vhost"
+
+
+WARNING The file 'log.txt' is missing or not readable.
+
+
+WARNING The file 'me.linux.se.conf' is missing or not readable.
+
+URL: http://www.student.bth.se/~daer16/dbwebb-kurser/linux/me/kmom02/vhost/dump.png
+
+WARNING The file 'dump.png' is missing or not readable.
+
+20170128
+Lyckades ej logga in, gui kom upp men jag blev promtad att ge user/pwd
+startade upp i recovery läge och utförde dessa kommandon:
+superuser.com/questions/806637/xauth-not-creating-xauthority-file   
+
+# Rename the existing .Xauthority file by running the following command
+mv .Xauthority old.Xauthority 
+
+# xauth with complain unless ~/.Xauthority exists
+touch ~/.Xauthority
+
+# only this one key is needed for X11 over SSH 
+xauth generate :0 . trusted 
+
+# generate our own key, xauth requires 128 bit hex encoding
+xauth add ${HOST}:0 . $(xxd -l 16 -p /dev/urandom)
+
+# To view a listing of the .Xauthority file, enter the following 
+xauth list 
+
+Fortsatt arbete med apache
+sudo apachectl configtest  
+sudo apachectl -t
+ok
+# List virtual hosts with settings
+apachectl -S
+
+	VirtualHost configuration:
+	*:80                   is a NameVirtualHost
+         default server debian.mydomain.se (/etc/apache2/sites-enabled/000-default.conf:1)
+         port 80 namevhost debian.mydomain.se (/etc/apache2/sites-enabled/000-default.conf:1)
+         port 80 namevhost linux.dbwebb.se (/etc/apache2/sites-enabled/linux.dbwebb.se.conf:1)
+                 alias www.linux.dbwebb.se
+	ServerRoot: "/etc/apache2"
+	Main DocumentRoot: "/var/www/html"
+	Main ErrorLog: "/var/log/apache2/error.log"
+	Mutex default: dir="/var/lock/apache2" mechanism=fcntl 
+	Mutex watchdog-callback: using_defaults
+	PidFile: "/var/run/apache2/apache2.pid"
+	Define: DUMP_VHOSTS
+	Define: DUMP_RUN_CFG
+	User: name="www-data" id=33
+	Group: name="www-data" id=33
+
+updatera med ny konfig: 
+dan@debian:/etc/apache2/sites-available$ linux.dbwebb.se.conf
+	<VirtualHost *:80>
+    		Define site linux.dbwebb.se
+    		Define path /home/dan/vhosts
+  		  ServerAdmin dan@dbwebb.se
+
+# Stop and start the service
+sudo service apache2 stop
+sudo apachectl stop
+
+sudo service apache2 start
+sudo apachectl start
+
+Vi behöver alltså sätta upp lokalt, i vårt eget nätverk, att maskinen linux.dbwebb.se känns igen som 127.0.0.1 och hamnar på min server som ligger i VirtualBox.
+
+sudo vim /etc/hosts
+	127.0.0.1   linux.dbwebb.se
+gör samma sak lokalt på min mac
+
+http://linux.dbwebb.se:8080  (funkar från min browser, alltså utanför virtualbox
+samtliga nedan fungerar
+Nu kan jag komma åt den lokala maskinen via namnet istället. Adressen http://linux.dbwebb.se:8080 är numer samma som att skriva http://localhost:8080 eller http://127.0.0.1:8080. Det är precis detta som Apache tittar på när den identifierar den namnbaserade virtuella hosten.
+
+Test av ssh - ok
+ssh dan@localhost -p 2222
+ssh dan@linux.dbwebb.se -p 2222
+
+kopiera ssh publika nyckeln
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub dan@linux.dbwebb.se -p 2222
+testa att logga in. Funkar ok utan lösenord
+ssh dan@linux.dbwebb.se -p 2222
+
+
+
+
+
+
+
+
+20170127
+Installera tmux på min mac
+brew install tmux
+se vidare separat map  tmux
+
+installera apache webserver på min debian
+sudo apt-get install apache2
+
+sudo service apache2 status
+
+installera webbläsaren lynx
+sudo apt-get install lynx
+lynx http://localhost
+
+cd /etc/apache2/sites-available
+sudo cp 000-default.conf linux.dbwebb.se.conf
+
+sudo apt-get install vim
+sudo vi linux.dbwebb.se.conf
+
+mkdir $HOME/vhosts
+mkdir $HOME/vhosts/linux.dbwebb.se
+mkdir $HOME/vhosts/linux.dbwebb.se/htdocs
+
+sudo cp linux.dbwebb.se.conf linux.dbwebb.se.conf_org
+sudo vi linux.dbwebb.se.conf_org
+lägg in mos configfil (https://dbwebb.se/kunskap/installera-webbplatser-med-apache-name-based-virtual-hosts)
+
+sudo a2ensite linux.dbwebb.se
+sudo service apache2 reload
+
+sudo vi /etc/hosts
+127.0.0.1   linux.dbwebb.se (lägg in denna) Obs, la in detta både på servern och klienten
+
+obs, nu ändrar jag tillbaka till NAT och portforwarding
+
+ssh -p 2222 masc15@debbie  (Mias)
+
+
+
+
+
+*****************
+
+
+2017-01-26 kmom02
+
+atom .   - öppnar upp filerna i atom
+sudo service ssh status
+	jan 26 09:53:54 debian sshd[416]: Server listening on 0.0.0.0 port 22.
+	jan 26 09:53:54 debian sshd[416]: Server listening on :: port 22.
+
+https://dbwebb.se/kunskap/installera-debian-pa-virtualbox#pf
+1. Trafik till localhost:2222 skickas vidare till den virtuella maskinen port 22.
+2. Trafik till localhost:8080 skickas vidare till den virtuella maskinen post 80.
+
+Ändra till bridged network  - ändra inställning från virtualbox, network och reboot (kan använda port forwarding också)
+kontrollera nätverket
+ping google.com
+ip addr show 
+	2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    	link/ether 08:00:27:ac:c5:f3 brd ff:ff:ff:ff:ff:ff
+    	inet 192.168.1.121/24 brd 192.168.1.255 scope global dynamic eth0
+
+sudo service ssh status
+
+ssh dan@192.168.1.121 (från min mac, funkar - ok)
+
+sudo apt-get install rsync  (installerar rsync på min image)
+
+cat /Users/danerlandsson/.ssh/id_rsa.pub
+ssh-copy-id -i $HOME/.ssh/id_rsa.pub dan@linux.dbwebb.se -p 2222  (kopiera över den publika nyckeln)
+
+

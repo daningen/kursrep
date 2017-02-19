@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bash 1 - linux</title>
+<style>
+body {
+    margin: 8px auto;
+    max-width: 700px;
+}
+
+div.answer {
+  font-family: "Courier New", monospace;
+  white-space: pre;
+  margin-bottom: 1em;
+}
+
+.fail {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+table, th, td {
+    border: 1px solid #666;
+}
+
+code {
+    background-color: #eee;
+    border: 1px solid #999;
+    padding: 1px;
+}
+
+pre code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+</style>
+</head>
+<body>
+
+<pre>
+b5750b7d818c53ea811fc93f50cb9200
+linux
+bash1
+daer16
+2017-01-26 09:30:18
+v2.2.27 (2017-01-24)
+</pre>
+
+<p><i>Generated 2017-02-11 16:50:36 by <a href="https://github.com/mosbth/lab">dbwebb lab-utility</a> v2.2.28* (2017-02-01).</i></p>
+<hr>
+
+<h1>Bash 1 - linux</h1>
+<p>A lab where you use Unix commands to list, find, and change i directory structure.</p>
+
+<p>The entire lab uses the apache2 configuration directory from &#8216;/etc/apache2&#8217; in linux installations.</p>
+
+
+<h2>1. ls</h2>
+<p>In this section we use the <code>ls</code> command to list files in the directory structure.</p>
+
+
+<h3>Exercise 1.1 (1 points)</h3>
+<p>Use the command <code>ls</code> to list the files in the <code>apache2</code> directory, list one file per line.</p>
+
+<p>Tip: Use the command <code>man ls</code> to see the flags that can be used for the <code>ls</code> command.</p>
+
+
+
+
+
+
+<h3>Exercise 1.2 (1 points)</h3>
+<p>Use the command <code>ls</code> to list the files in the <code>apache2</code> directory. Use a flag so every directory gets a slash (<code>/</code>) after the name, list one file per line.</p>
+
+<p>Tip: Use the command <code>man ls</code> to see the flags that can be used for the <code>ls</code> command.</p>
+
+
+
+
+
+
+<h3>Exercise 1.3 (1 points)</h3>
+<p>First change directory to <code>apache2/mods-available</code> and use the <code>ls</code> command to list the files in the directory.</p>
+
+<p>List only files beginning with &#8216;a&#8217; and have the file extension &#8216;.conf&#8217;. List one file per line.</p>
+
+<p>You can use <code>&amp;&amp;</code> to chain two or more commands on the same line.</p>
+
+<p>Tip: Use a wildcard <code>*</code> to match against more than one file.</p>
+
+
+
+
+
+
+<h3>Exercise 1.4 (1 points)</h3>
+<p>List all, even hidden, files and directories in the <code>apache2/sites-available</code> directory. List one file per line.</p>
+
+
+
+
+
+
+<h3>Exercise 1.5 (1 points)</h3>
+<p>List files and directories in <code>apache2/conf-available</code>, sort the files in file size order with the smallest file first.</p>
+
+<p>List one file per line.</p>
+
+<p>Do not show hidden files.</p>
+
+
+
+
+
+
+
+<h2>2. file</h2>
+<p>In this section we will use the <code>file</code> command to get information on the files in the directory structure.</p>
+
+
+<h3>Exercise 2.1 (1 points)</h3>
+<p>Use the <code>file</code> command to show the file name and type for the files and directories in <code>apache2</code>.</p>
+
+
+
+
+
+
+<h3>Exercise 2.2 (1 points)</h3>
+<p>Use the <code>file</code> command to show only the file type for the files and directories in <code>apache2</code>.</p>
+
+
+
+
+
+
+
+<h2>3. cp, mv, mkdir och rm</h2>
+<p>In this section we use the <code>cp</code>, <code>mv</code>, <code>mkdir</code> and <code>rm</code> to change in the directory structure.</p>
+
+
+<h3>Exercise 3.1 (1 points)</h3>
+<p>Use the <code>mkdir</code> command to create a directory called <code>backup/</code> if the directory does not exist.</p>
+
+<p>Copy all files with the file extension <code>.conf</code> from <code>apache2/mods-available</code> to a new directory <code>backup/conf/</code>, create the directory if it does not exist.</p>
+
+<p>Lista the files in the new directory <code>backup/conf/</code>, sort the files according to file size, with the biggest file first. List one file per line.</p>
+
+<p>Tip: Use <code>&amp;&amp;</code> to execute more than one command and <code>man mkdir</code> to find the correct flag.</p>
+
+
+
+
+
+
+<h3>Exercise 3.2 (1 points)</h3>
+<p>Use the <code>mkdir</code> command to create a new subdirectory <code>backup/php/</code> if it does not exist.</p>
+
+<p>Use the <code>mv</code> command to move all files beginning with &#8216;php&#8217; from <code>backup/conf/</code> to the new directory.</p>
+
+<p>List the files in the <code>backup/conf/</code> directory. List one file per line.</p>
+
+
+
+
+
+
+<h3>Exercise 3.3 (1 points)</h3>
+<p>Remove all files the begins with &#8216;proxy&#8217; from <code>backup/conf/</code>.</p>
+
+<p>List the files in the <code>backup/conf/</code> directory. List one file per line.</p>
+
+
+
+
+
+
+<h3>Exercise 3.4 (1 points)</h3>
+<p>Use the <code>cp</code> command to copy all files from the <code>backup/php/</code> directory to the <code>backup/</code> directory.</p>
+
+<p>Remove the entire <code>backup/php/</code> directory.</p>
+
+<p>List files and directories in the <code>backup/</code> directory, use a flag so that all directories gets a slash (<code>/</code>) at the end of the file name. List one file per line.</p>
+
+
+
+
+
+
+
+<h2>4. find</h2>
+<p>In this section we use the <code>find</code> to find files and directories in a directory structure.</p>
+
+<p>In this section you work with the original directory <code>apache2/</code>.</p>
+
+
+<h3>Exercise 4.1 (1 points)</h3>
+<p>Use the <code>find</code> command to find the <code>apache2.conf</code> file in the <code>apache2/</code> directory.</p>
+
+
+
+
+
+
+<h3>Exercise 4.2 (1 points)</h3>
+<p>Use the <code>find</code> command to find all empty files in the <code>apache2/</code> directory.</p>
+
+
+
+
+
+
+<h3>Exercise 4.3 (1 points)</h3>
+<p>Use the <code>find</code> command to find all directories which have &#8216;conf&#8217; in the file name in the <code>apache2/</code> directory.</p>
+
+<p>Search only in the <code>apache2/</code> directory and not inte subdirectories.</p>
+
+
+
+
+
+
+<h3>Exercise 4.4 (1 points)</h3>
+<p>Use the <code>find</code> command to find all files which contain &#8216;ssl&#8217; in the name and has the file extension &#8216;.conf&#8217;.</p>
+
+<p>Search only in the <code>apache2/sites-available</code> and <code>apache2/mods-available</code> directories.</p>
+
+
+
+
+
+
+
+<hr>
+<code>b5750b7d818c53ea811fc93f50cb9200</code>
+
+</body>
+</html>

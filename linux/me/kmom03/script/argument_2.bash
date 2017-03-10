@@ -14,10 +14,11 @@ echo -e "$1"
 echo -e The arguments are: "$1", "$2"   #skriver ut de två första
 if [ "$1" == "d" ]
 then
-  echo -e "$date"
+  date=$(date)
+  echo "$date"
 elif [ "$1" == "n" ]
 then
-  for val in {11..20}
+  for val in {1..20}
   do
     echo "$val"
   done

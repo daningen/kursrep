@@ -86,7 +86,7 @@ function app-factors
       #echo "$var"
       #echo "num "$num
       for (( i=2; i<="$var"; i++ ));do
-        while [ $((num%"$i")) == 0 ];do
+        while [ $((num%$i)) == 0 ];do
           #echo hoho $i
           result+="$i"
           result+=" "
